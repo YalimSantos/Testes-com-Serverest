@@ -9,10 +9,6 @@
 // ***********************************************
 //
 //
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //
@@ -23,3 +19,40 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('postarUsuarioJaCadastrado', () => { 
+    return cy.request({
+        method: 'POST',
+        url: '/usuarios',
+        failOnStatusCode: false,
+        body: {
+            "nome": "Guo",
+            "email": "Olivar.Silva77@yahoo.com",
+            "password": "teste",
+            "administrador": "true"
+        }
+    })
+})
+
+Cypress.Commands.add('login', (email, senha) => { 
+    return cy.request({
+        method: 'POST',
+        url: '/login',
+        failOnStatusCode: false,
+        body: {
+            "email": email,
+            "password": senha
+        }
+    })
+})
+
+Cypress.Commands.add('buscarUsuarioAleatorio', () => { 
+    cy.request('/usuarios').then( res => {
+        expect( res.body ).to.haveOwnProperty( 'usuarios' )
+        expect( res.body.quantidade ).to.be.greaterThan(0)
+        return {
+            "email": res.body.usuarios[0].email,
+            "senha": res.body.usuarios[0].password
+        }
+    } )
+})
