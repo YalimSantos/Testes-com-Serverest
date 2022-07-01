@@ -26,8 +26,8 @@ Cypress.Commands.add('postarUsuarioJaCadastrado', () => {
         url: '/usuarios',
         failOnStatusCode: false,
         body: {
-            "nome": "Guo",
-            "email": "Olivar.Silva77@yahoo.com",
+            "nome": "Fulano da Silva",
+            "email": "fulano@qa.com",
             "password": "teste",
             "administrador": "true"
         }
