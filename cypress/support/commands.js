@@ -20,6 +20,29 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+import Ajv from 'ajv'
+
+const ajv = new Ajv({allErrors: true, verbose: true, strict: false})
+
+Cypress.Commands.add('contractValidation', (res, schema, status) => {
+    cy.log('Validando contrato para ' + schema + ' com status de ' + status)
+    cy.fixture('schemas/' + schema + '/' + status + '.json').then( schema => {
+        const validate = ajv.compile(schema)
+        const valid = validate(res.body)
+
+        if( !valid )
+        {
+            var errors = ''
+            for( let each in validate.errors )
+            {
+                let err = validate.errors[each]
+                errors += err.instancePath + ' ' + err.message + ', but receive ' + typeof err.data + '\n'
+            }
+            throw new Error('Erros encontrados na validação de contrato, por favor verifique: ' + errors)
+        }
+    })
+})
+
 Cypress.Commands.add('postarUsuarioJaCadastrado', () => { 
     return cy.request({
         method: 'POST',

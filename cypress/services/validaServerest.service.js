@@ -6,9 +6,6 @@ export default class ValidaServerest {
     // Validar o login
 
     static ValidarBuscaDeUsuarios( res ){
-        expect( res ).to.be.a( 'object' )
-        expect( res.body ).to.haveOwnProperty( 'quantidade' )
-        expect( res.body.quantidade ).to.be.a( 'number' )
         expect( res.body.quantidade ).to.be.greaterThan( 0 )
     }
 

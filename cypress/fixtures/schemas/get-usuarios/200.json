@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "required": [
+        "quantidade",
+        "usuarios"
+    ],
+    "additionalProperties": true,
+    "properties": {
+        "quantidade": {
+            "type": "integer"
+        },
+        "usuarios": {
+            "type": "array",
+            "additionalItems": true,
+            "items": {
+                "type": "object",
+                "required": [
+                    "nome",
+                    "email",
+                    "password",
+                    "administrador",
+                    "_id"
+                ],
+                "additionalProperties": true,
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "administrador": {
+                        "type": "string"
+                    },
+                    "_id": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

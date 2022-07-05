@@ -23,6 +23,7 @@
   "homepage": "https://github.com/YalimSantos/LogicalForest_Yalim_Santos_Sprint5#readme",
   "devDependencies": {
     "@faker-js/faker": "^7.3.0",
+    "ajv": "^8.11.0",
     "cypress": "^8.7.0"
   }
 }
