@@ -12,9 +12,6 @@ export default class ValidaServerest {
     // login //
 
     static ValidaLogin( res ){
-        expect( res ).to.be.a('object')
-        expect( res.body ).to.haveOwnProperty( 'message' )
-        expect( res.body ).to.haveOwnProperty( 'authorization' )
         expect( res.body.message ).to.be.eq( 'Login realizado com sucesso' )
     }
 

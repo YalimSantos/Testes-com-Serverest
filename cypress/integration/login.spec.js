@@ -9,6 +9,7 @@ describe('Casos de teste da rota /login da API Serverest', () => {
         Serverest.buscarUsuarioAleatorio()
         cy.get('@usuarioLogin').then( usuario => {
             Serverest.login( usuario ).then( res => {
+                cy.contractValidation( res, 'get-login', 200 )
                 ValidaServerest.ValidaLogin( res )
                 Serverest.salvarBearer( res )
             })
@@ -31,6 +32,7 @@ describe('Casos de teste da rota /login da API Serverest', () => {
             }
 
             Serverest.login( usuario ).then( res => {
+                cy.contractValidation( res, 'get-login', 200 )
                 ValidaServerest.ValidaLogin( res )
                 Serverest.salvarBearer( res )
             })
