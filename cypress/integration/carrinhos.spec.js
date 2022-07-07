@@ -34,7 +34,7 @@ describe('Casos de teste da rota /carrinhos da API Serverest', () => {
             })
         })
 
-        it('Deve excluir o novo carrinho criado no teste acima', () => {
+        it('Deve concluir a compra do novo carrinho criado no teste acima', () => {
             Serverest.concluirCompra().then( res => {
                 cy.contractValidation( res, 'delete-carrinhos/concluir-compra', 200 )
                 ValidaServerest.validaConclusaoDeCompra( res )
