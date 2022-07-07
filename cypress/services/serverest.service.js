@@ -4,6 +4,7 @@ const URL_USUARIOS  = '/usuarios'
 const URL_LOGIN     = '/login'
 const URL_PRODUTOS  = '/produtos'
 const URL_CARRINHOS = '/carrinhos'
+const URL_CARRINHOS_CONCLUIR_COMPRA = '/carrinhos/concluir-compra'
 
 export default class Serverest {
 
@@ -42,6 +43,15 @@ export default class Serverest {
 
     // produtos //
 
+    static buscarProdutoAleatorio(){
+        this.buscarProdutos().then( res => {
+            expect( res.body.produtos[0] ).to.haveOwnProperty( '_id' )
+            cy.wrap({
+                "_id": res.body.produtos[0]._id
+            }).as('produtoId')
+        })
+    }
+
     static buscarProdutos(){
         return cy.request( URL_PRODUTOS )
     }
@@ -57,6 +67,42 @@ export default class Serverest {
                 bearer: Cypress.env( 'bearer' )
             },
             body: produto
+        })
+    }
+
+    // carrinhos //
+
+    static buscarCarrinhos(){
+        return cy.request( URL_CARRINHOS )
+    }
+
+    static cadastrarCarrinho( produtoId ){
+        return cy.request({
+            method: 'POST',
+            url: URL_CARRINHOS,
+            failOnStatusCode: true,
+            auth: {
+                bearer: Cypress.env( 'bearer' )
+            },
+            body: {
+                "produtos": [
+                  {
+                    "idProduto": produtoId,
+                    "quantidade": 1
+                  }
+                ]
+              }
+        })
+    }
+
+    static concluirCompra(){
+        return cy.request({
+            method: 'DELETE',
+            url: URL_CARRINHOS_CONCLUIR_COMPRA,
+            failOnStatusCode: true,
+            auth: {
+                bearer: Cypress.env( 'bearer' )
+            }
         })
     }
 

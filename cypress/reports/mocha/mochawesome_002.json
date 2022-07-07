@@ -1,13 +1,13 @@
 {
   "stats": {
-    "suites": 1,
+    "suites": 2,
     "tests": 2,
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2022-07-06T15:39:05.500Z",
-    "end": "2022-07-06T15:39:06.021Z",
-    "duration": 521,
+    "start": "2022-07-06T17:27:11.823Z",
+    "end": "2022-07-06T17:27:12.808Z",
+    "duration": 985,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,68 +18,89 @@
   },
   "results": [
     {
-      "uuid": "b2bdd10d-99f8-41ba-b300-80510f6e72c5",
+      "uuid": "20bfef7e-abf8-428e-8a34-214d5626f08e",
       "title": "",
-      "fullFile": "cypress/integration/usuarios.spec.js",
-      "file": "cypress/integration/usuarios.spec.js",
+      "fullFile": "cypress/integration/produtos.spec.js",
+      "file": "cypress/integration/produtos.spec.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "4d0625b3-0b9a-4d3f-b314-9571c46d5a4c",
-          "title": "Casos de teste da rota /usuarios da API Serverest",
+          "uuid": "1b7a94a4-28f1-4b2b-bd4d-33a66a69d6b5",
+          "title": "Casos de teste da rota /produtos da API Serverest",
           "fullFile": "",
           "file": "",
           "beforeHooks": [],
           "afterHooks": [],
           "tests": [
             {
-              "title": "Deve buscar todos os usuários cadastrados",
-              "fullTitle": "Casos de teste da rota /usuarios da API Serverest Deve buscar todos os usuários cadastrados",
+              "title": "Deve buscar todos os produtos cadastrados",
+              "fullTitle": "Casos de teste da rota /produtos da API Serverest Deve buscar todos os produtos cadastrados",
               "timedOut": null,
-              "duration": 283,
+              "duration": 301,
               "state": "passed",
               "speed": "fast",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "_serverest.default.buscarUsuarios().then(res => {\n  cy.contractValidation(res, 'get-usuarios', 200);\n  _validaServerest.default.ValidarBuscaDeUsuarios(res);\n});",
+              "code": "_serverest.default.buscarProdutos().then(res => {\n  cy.contractValidation(res, 'get-produtos', 200);\n  _validaServerest.default.validaBuscaDeProdutos(res);\n});",
               "err": {},
-              "uuid": "8ef576d3-7675-4324-b2cc-1af98f0281e5",
-              "parentUUID": "4d0625b3-0b9a-4d3f-b314-9571c46d5a4c",
-              "isHook": false,
-              "skipped": false
-            },
-            {
-              "title": "Não deve realizar cadastro de um novo usuário",
-              "fullTitle": "Casos de teste da rota /usuarios da API Serverest Não deve realizar cadastro de um novo usuário",
-              "timedOut": null,
-              "duration": 219,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "cy.postarUsuarioJaCadastrado().then(res => {\n  cy.contractValidation(res, 'post-usuarios', 400);\n  expect(res.body.message).to.be.eq('Este email já está sendo usado');\n});",
-              "err": {},
-              "uuid": "918a7bc2-da23-4588-b6c2-26365219328b",
-              "parentUUID": "4d0625b3-0b9a-4d3f-b314-9571c46d5a4c",
+              "uuid": "ba3242df-94d0-4951-a449-a2c4f182db0b",
+              "parentUUID": "1b7a94a4-28f1-4b2b-bd4d-33a66a69d6b5",
               "isHook": false,
               "skipped": false
             }
           ],
-          "suites": [],
+          "suites": [
+            {
+              "uuid": "2b317e9c-9fdc-48fb-b1a6-da4caf52e0c6",
+              "title": "Logar com sucesso",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Deve postar um novo produto",
+                  "fullTitle": "Casos de teste da rota /produtos da API Serverest Logar com sucesso Deve postar um novo produto",
+                  "timedOut": null,
+                  "duration": 664,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "_serverest.default.cadastrarProduto().then(res => {\n  cy.contractValidation(res, 'post-produtos', 201);\n  _validaServerest.default.validaCadastroDeProduto(res);\n});",
+                  "err": {},
+                  "uuid": "6fc6facb-9a3c-42c1-bb15-e1002a92d34f",
+                  "parentUUID": "2b317e9c-9fdc-48fb-b1a6-da4caf52e0c6",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "6fc6facb-9a3c-42c1-bb15-e1002a92d34f"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 664,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
           "passes": [
-            "8ef576d3-7675-4324-b2cc-1af98f0281e5",
-            "918a7bc2-da23-4588-b6c2-26365219328b"
+            "ba3242df-94d0-4951-a449-a2c4f182db0b"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 502,
+          "duration": 301,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

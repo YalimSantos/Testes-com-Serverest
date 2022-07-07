@@ -19,6 +19,7 @@ describe('Casos de teste da rota /login da API Serverest', () => {
     // Salva para fazer o login no teste abaixo desse
     it('Deve buscar e salvar um usuário em um arquivo json', () => {
         Serverest.buscarUsuarios().then( res => {
+            cy.contractValidation( res, 'get-usuarios', 200 )
             cy.writeFile('./cypress/fixtures/usuario.json', res.body.usuarios[0])
             ValidaServerest.ValidarBuscaDeUsuarios( res )
         })
