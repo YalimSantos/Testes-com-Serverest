@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2022-07-06T17:27:17.844Z",
-    "end": "2022-07-06T17:27:18.370Z",
-    "duration": 526,
+    "start": "2022-07-07T15:43:09.230Z",
+    "end": "2022-07-07T15:43:09.954Z",
+    "duration": 724,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "e0ebef16-8abe-479c-8c34-3c69b798c2f7",
+      "uuid": "c931bbc2-12b1-40d4-b424-53de27866848",
       "title": "",
       "fullFile": "cypress/integration/usuarios.spec.js",
       "file": "cypress/integration/usuarios.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "e915ed43-2121-4342-a726-4a77ae3af342",
+          "uuid": "79862434-7214-4878-8c9f-da4cc6630b85",
           "title": "Casos de teste da rota /usuarios da API Serverest",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Deve buscar todos os usuários cadastrados",
               "fullTitle": "Casos de teste da rota /usuarios da API Serverest Deve buscar todos os usuários cadastrados",
               "timedOut": null,
-              "duration": 293,
+              "duration": 453,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "_serverest.default.buscarUsuarios().then(res => {\n  cy.contractValidation(res, 'get-usuarios', 200);\n  _validaServerest.default.ValidarBuscaDeUsuarios(res);\n});",
               "err": {},
-              "uuid": "4098fc09-66a0-4d11-b7bd-21fc170c8c45",
-              "parentUUID": "e915ed43-2121-4342-a726-4a77ae3af342",
+              "uuid": "e8bf31f2-2419-4eac-a064-2c5666bb4ef1",
+              "parentUUID": "79862434-7214-4878-8c9f-da4cc6630b85",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "Não deve realizar cadastro de um novo usuário",
               "fullTitle": "Casos de teste da rota /usuarios da API Serverest Não deve realizar cadastro de um novo usuário",
               "timedOut": null,
-              "duration": 212,
+              "duration": 239,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,21 +65,21 @@
               "context": null,
               "code": "cy.postarUsuarioJaCadastrado().then(res => {\n  cy.contractValidation(res, 'post-usuarios', 400);\n  expect(res.body.message).to.be.eq('Este email já está sendo usado');\n});",
               "err": {},
-              "uuid": "e72bba20-99c6-4d82-bbaf-84606d5bddfa",
-              "parentUUID": "e915ed43-2121-4342-a726-4a77ae3af342",
+              "uuid": "812abbc9-7acb-44fb-8bee-f411dd19af84",
+              "parentUUID": "79862434-7214-4878-8c9f-da4cc6630b85",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "4098fc09-66a0-4d11-b7bd-21fc170c8c45",
-            "e72bba20-99c6-4d82-bbaf-84606d5bddfa"
+            "e8bf31f2-2419-4eac-a064-2c5666bb4ef1",
+            "812abbc9-7acb-44fb-8bee-f411dd19af84"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 505,
+          "duration": 692,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

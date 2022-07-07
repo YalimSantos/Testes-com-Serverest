@@ -13,7 +13,7 @@ describe('Casos de teste da rota /carrinhos da API Serverest', () => {
     })
 
     context('Logar com sucesso', () => {
-        beforeEach( 'Logar', () => {
+        before( 'Logar', () => {
             Serverest.buscarUsuarioAleatorio()
             cy.get('@usuarioLogin').then( usuario => {
                 Serverest.login( usuario ).then( res => {
@@ -30,17 +30,6 @@ describe('Casos de teste da rota /carrinhos da API Serverest', () => {
                 Serverest.cadastrarCarrinho( produtoId._id ).then( res => {
                     cy.contractValidation( res, 'post-carrinhos', 201 )
                     ValidaServerest.validaCadastroDeCarrinho( res )
-                })
-            })
-        })
-
-        beforeEach( 'Logar', () => {
-            Serverest.buscarUsuarioAleatorio()
-            cy.get('@usuarioLogin').then( usuario => {
-                Serverest.login( usuario ).then( res => {
-                    cy.contractValidation( res, 'get-login', 200 )
-                    ValidaServerest.ValidaLogin( res )
-                    Serverest.salvarBearer( res )
                 })
             })
         })
