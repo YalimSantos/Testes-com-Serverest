@@ -22,6 +22,12 @@ describe('Casos de teste da rota /carrinhos da API Serverest', () => {
                     Serverest.salvarBearer( res )
                 })
             })
+        })        
+
+        it('Se existir, deve concluir a compra do carrinho de um usuário', () => {
+            Serverest.concluirCompra().then( res => {
+                cy.contractValidation( res, 'delete-carrinhos/concluir-compra', 200 )
+            })
         })
 
         it('Deve postar um novo carrinho', () => {
@@ -30,15 +36,16 @@ describe('Casos de teste da rota /carrinhos da API Serverest', () => {
                 Serverest.cadastrarCarrinho( produtoId._id ).then( res => {
                     cy.contractValidation( res, 'post-carrinhos', 201 )
                     ValidaServerest.validaCadastroDeCarrinho( res )
+                    Serverest.SalvaIdDeCarrinho( res.body._id )
                 })
             })
         })
-
-        it('Deve concluir a compra do novo carrinho criado no teste acima', () => {
-            Serverest.concluirCompra().then( res => {
-                cy.contractValidation( res, 'delete-carrinhos/concluir-compra', 200 )
-                ValidaServerest.validaConclusaoDeCompra( res )
-            })
+           
+        it('Busca carrinho recém postado de usuário', () => {
+            Serverest.localizarCarrinhoDeUsuario( Cypress.env( 'carrinhoId' ) ).then( res => {
+                cy.contractValidation( res, 'get-carrinhos/id', 200 )
+            })     
         })
+
     })
 })

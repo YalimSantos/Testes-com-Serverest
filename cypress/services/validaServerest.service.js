@@ -35,8 +35,4 @@ export default class ValidaServerest {
         expect( res.body.message ).to.be.eq( 'Cadastro realizado com sucesso' )
     }
 
-    static validaConclusaoDeCompra( res ){
-        expect( res.body.message ).to.be.eq( 'Registro excluído com sucesso' )
-    }
-
 }

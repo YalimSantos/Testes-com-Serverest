@@ -120,4 +120,14 @@ export default class Serverest {
         })
     }
 
+    static SalvaIdDeCarrinho( carrinhoId )
+    {
+        Cypress.env('carrinhoId', carrinhoId)
+    }
+
+    static localizarCarrinhoDeUsuario( carrinhoId )
+    {
+        return cy.request( URL_CARRINHOS + '/' + carrinhoId )
+    }
+
 }
