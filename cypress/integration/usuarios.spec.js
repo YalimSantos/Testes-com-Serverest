@@ -18,7 +18,7 @@ describe('Casos de teste da rota /usuarios da API Serverest', () => {
         })
     })
 
-    it('Deve localizar usuário pelo id', () => {
+    it('Deve buscar usuário pelo id', () => {
         Serverest.buscarIdAleatorio()
         cy.get( '@usuarioId' ).then( usuarioId => {
             Serverest.localizarUsuarioComId( usuarioId._id ).then( res => {

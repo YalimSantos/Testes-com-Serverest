@@ -1,14 +1,14 @@
 {
   "stats": {
     "suites": 1,
-    "tests": 2,
-    "passes": 2,
+    "tests": 3,
+    "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2022-07-07T15:43:09.230Z",
-    "end": "2022-07-07T15:43:09.954Z",
-    "duration": 724,
-    "testsRegistered": 2,
+    "start": "2022-07-08T17:42:58.036Z",
+    "end": "2022-07-08T17:42:59.043Z",
+    "duration": 1007,
+    "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "c931bbc2-12b1-40d4-b424-53de27866848",
+      "uuid": "93f2fbd4-05c6-4dd5-bcc4-7b712a4c8b0a",
       "title": "",
       "fullFile": "cypress/integration/usuarios.spec.js",
       "file": "cypress/integration/usuarios.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "79862434-7214-4878-8c9f-da4cc6630b85",
+          "uuid": "0639a24c-8cbf-436b-b5b7-42c7089fc8bb",
           "title": "Casos de teste da rota /usuarios da API Serverest",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Deve buscar todos os usuários cadastrados",
               "fullTitle": "Casos de teste da rota /usuarios da API Serverest Deve buscar todos os usuários cadastrados",
               "timedOut": null,
-              "duration": 453,
+              "duration": 323,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "_serverest.default.buscarUsuarios().then(res => {\n  cy.contractValidation(res, 'get-usuarios', 200);\n  _validaServerest.default.ValidarBuscaDeUsuarios(res);\n});",
               "err": {},
-              "uuid": "e8bf31f2-2419-4eac-a064-2c5666bb4ef1",
-              "parentUUID": "79862434-7214-4878-8c9f-da4cc6630b85",
+              "uuid": "6389ae93-1b04-4311-94eb-bf3c87eaae69",
+              "parentUUID": "0639a24c-8cbf-436b-b5b7-42c7089fc8bb",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "Não deve realizar cadastro de um novo usuário",
               "fullTitle": "Casos de teste da rota /usuarios da API Serverest Não deve realizar cadastro de um novo usuário",
               "timedOut": null,
-              "duration": 239,
+              "duration": 204,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,21 +65,40 @@
               "context": null,
               "code": "cy.postarUsuarioJaCadastrado().then(res => {\n  cy.contractValidation(res, 'post-usuarios', 400);\n  expect(res.body.message).to.be.eq('Este email já está sendo usado');\n});",
               "err": {},
-              "uuid": "812abbc9-7acb-44fb-8bee-f411dd19af84",
-              "parentUUID": "79862434-7214-4878-8c9f-da4cc6630b85",
+              "uuid": "bb44f531-e668-4ece-9dc8-6ec2095d95cc",
+              "parentUUID": "0639a24c-8cbf-436b-b5b7-42c7089fc8bb",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve localizar usuário pelo id",
+              "fullTitle": "Casos de teste da rota /usuarios da API Serverest Deve localizar usuário pelo id",
+              "timedOut": null,
+              "duration": 441,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_serverest.default.buscarIdAleatorio();\ncy.get('@usuarioId').then(usuarioId => {\n  _serverest.default.localizarUsuarioComId(usuarioId._id).then(res => {\n    cy.contractValidation(res, 'get-usuarios/id', 200);\n  });\n});",
+              "err": {},
+              "uuid": "ad10c935-3d2c-4b43-a325-8abd09d6ca85",
+              "parentUUID": "0639a24c-8cbf-436b-b5b7-42c7089fc8bb",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "e8bf31f2-2419-4eac-a064-2c5666bb4ef1",
-            "812abbc9-7acb-44fb-8bee-f411dd19af84"
+            "6389ae93-1b04-4311-94eb-bf3c87eaae69",
+            "bb44f531-e668-4ece-9dc8-6ec2095d95cc",
+            "ad10c935-3d2c-4b43-a325-8abd09d6ca85"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 692,
+          "duration": 968,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

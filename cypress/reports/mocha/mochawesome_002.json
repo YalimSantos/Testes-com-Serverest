@@ -5,9 +5,9 @@
     "passes": 2,
     "pending": 0,
     "failures": 0,
-    "start": "2022-07-07T15:43:01.808Z",
-    "end": "2022-07-07T15:43:02.849Z",
-    "duration": 1041,
+    "start": "2022-07-08T17:42:51.133Z",
+    "end": "2022-07-08T17:42:52.203Z",
+    "duration": 1070,
     "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "9ade5308-5d61-4488-a3ba-e4817e6e0122",
+      "uuid": "d34a9f50-989f-4bce-b95e-a91d69291a85",
       "title": "",
       "fullFile": "cypress/integration/produtos.spec.js",
       "file": "cypress/integration/produtos.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "5bb0e999-4cb4-4359-ba79-e866c383bfdf",
+          "uuid": "e2df562f-17d3-4cde-9f11-011315fdbfa8",
           "title": "Casos de teste da rota /produtos da API Serverest",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Deve buscar todos os produtos cadastrados",
               "fullTitle": "Casos de teste da rota /produtos da API Serverest Deve buscar todos os produtos cadastrados",
               "timedOut": null,
-              "duration": 351,
+              "duration": 359,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,15 +47,15 @@
               "context": null,
               "code": "_serverest.default.buscarProdutos().then(res => {\n  cy.contractValidation(res, 'get-produtos', 200);\n  _validaServerest.default.validaBuscaDeProdutos(res);\n});",
               "err": {},
-              "uuid": "0294db33-fb7b-4ad5-9078-cc0e1a22e420",
-              "parentUUID": "5bb0e999-4cb4-4359-ba79-e866c383bfdf",
+              "uuid": "1532d5ad-368d-44b6-8b64-afa0bf2cdc3a",
+              "parentUUID": "e2df562f-17d3-4cde-9f11-011315fdbfa8",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [
             {
-              "uuid": "be3e78e7-2e04-4655-8c8e-6d41702581ce",
+              "uuid": "cfe765c3-25b0-488e-a5f9-934aa1b5c830",
               "title": "Logar com sucesso",
               "fullFile": "",
               "file": "",
@@ -66,7 +66,7 @@
                   "title": "Deve postar um novo produto",
                   "fullTitle": "Casos de teste da rota /produtos da API Serverest Logar com sucesso Deve postar um novo produto",
                   "timedOut": null,
-                  "duration": 646,
+                  "duration": 677,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -75,32 +75,32 @@
                   "context": null,
                   "code": "_serverest.default.cadastrarProduto().then(res => {\n  cy.contractValidation(res, 'post-produtos', 201);\n  _validaServerest.default.validaCadastroDeProduto(res);\n});",
                   "err": {},
-                  "uuid": "0d0548b7-9273-449f-99a0-73988373b072",
-                  "parentUUID": "be3e78e7-2e04-4655-8c8e-6d41702581ce",
+                  "uuid": "c2a140ac-1120-471e-8f99-0805eb3875c5",
+                  "parentUUID": "cfe765c3-25b0-488e-a5f9-934aa1b5c830",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "0d0548b7-9273-449f-99a0-73988373b072"
+                "c2a140ac-1120-471e-8f99-0805eb3875c5"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 646,
+              "duration": 677,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             }
           ],
           "passes": [
-            "0294db33-fb7b-4ad5-9078-cc0e1a22e420"
+            "1532d5ad-368d-44b6-8b64-afa0bf2cdc3a"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 351,
+          "duration": 359,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
