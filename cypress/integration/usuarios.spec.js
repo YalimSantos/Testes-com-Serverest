@@ -18,4 +18,13 @@ describe('Casos de teste da rota /usuarios da API Serverest', () => {
         })
     })
 
+    it('Deve localizar usuário pelo id', () => {
+        Serverest.buscarIdAleatorio()
+        cy.get( '@usuarioId' ).then( usuarioId => {
+            Serverest.localizarUsuarioComId( usuarioId._id ).then( res => {
+                cy.contractValidation( res, 'get-usuarios/id', 200 )
+            })
+        })
+    })
+
 })

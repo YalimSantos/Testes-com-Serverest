@@ -13,6 +13,8 @@ export default class Serverest {
     // Cadastrar novos usuários
     // Realizar login
 
+    // usuarios //
+
     static buscarUsuarios(){
         return cy.request( URL_USUARIOS )
     }
@@ -24,6 +26,18 @@ export default class Serverest {
                 "password": res.body.usuarios[0].password
             }).as('usuarioLogin')
         })
+    }
+
+    static buscarIdAleatorio(){
+        this.buscarUsuarios().then( res => {
+            cy.wrap({
+                "_id": res.body.usuarios[0]._id
+            }).as('usuarioId')
+        })
+    }
+
+    static localizarUsuarioComId( usuarioId ){
+        return cy.request( URL_USUARIOS + '/' + usuarioId )
     }
 
     // login //
