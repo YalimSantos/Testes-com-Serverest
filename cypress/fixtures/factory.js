@@ -10,4 +10,25 @@ export default class Factory {
         "quantidade": faker.datatype.number()
         }
     }
+
+    static gerarNovoUsuario(){
+        return {
+        "nome": faker.name.firstName(),
+        "email": faker.internet.email(),
+        "password": faker.internet.password(),
+        "administrador": "true"
+        }
+    }
+
+    static gerarNome(){
+        return faker.name.firstName()
+    }
+
+    static gerarEmail(){
+        return faker.internet.email()
+    }
+
+    static gerarId(){
+        return faker.internet.password(16)
+    }
 }

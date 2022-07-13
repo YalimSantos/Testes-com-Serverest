@@ -15,6 +15,58 @@ export default class Serverest {
 
     // usuarios //
 
+    static postarNovoUsuario(){
+        let usuario = Factory.gerarNovoUsuario()
+
+        return cy.request({
+            method: 'POST',
+            url: URL_USUARIOS,
+            failOnStatusCode: true,
+            body: usuario
+        })
+    }
+
+    static postarNovoUsuarioComParametro( usuario ){
+        return cy.request({
+            method: 'POST',
+            url: URL_USUARIOS,
+            failOnStatusCode: true,
+            body: usuario
+        })
+    }
+
+    static modificarUsuario( usuarioId ){
+        Serverest.localizarUsuarioComId( usuarioId ).then( res => {
+            cy.contractValidation( res, 'get-usuarios/id', 200 )
+        })
+
+        return cy.request({
+            method: 'PUT',
+            url: URL_USUARIOS + '/' + usuarioId,
+            failOnStatusCode: true,
+            body: {            
+                "nome": Factory.gerarNome(),
+                "email": Factory.gerarEmail(),
+                "password": "teste",
+                "administrador": "true"               
+            }
+        })
+    }
+
+    static criarUsuarioComPut( usuarioId ){
+        return cy.request({
+            method: 'PUT',
+            url: URL_USUARIOS + '/' + usuarioId,
+            failOnStatusCode: true,
+            body: {            
+                "nome": Factory.gerarNome(),
+                "email": Factory.gerarEmail(),
+                "password": "teste",
+                "administrador": "true"               
+            }
+        })
+    }
+
     static buscarUsuarios(){
         return cy.request( URL_USUARIOS )
     }
@@ -33,6 +85,8 @@ export default class Serverest {
             cy.wrap({
                 "_id": res.body.usuarios[0]._id
             }).as('usuarioId')
+            
+            Cypress.env('usuarioId', res.body.usuarios[0]._id)
         })
     }
 

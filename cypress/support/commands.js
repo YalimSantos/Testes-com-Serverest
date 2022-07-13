@@ -43,20 +43,6 @@ Cypress.Commands.add('contractValidation', (res, schema, status) => {
     })
 })
 
-Cypress.Commands.add('postarUsuarioJaCadastrado', () => { 
-    return cy.request({
-        method: 'POST',
-        url: '/usuarios',
-        failOnStatusCode: false,
-        body: {
-            "nome": "Fulano da Silva",
-            "email": "fulano@qa.com",
-            "password": "teste",
-            "administrador": "true"
-        }
-    })
-})
-
 Cypress.Commands.add('login', (email, senha) => { 
     return cy.request({
         method: 'POST',
