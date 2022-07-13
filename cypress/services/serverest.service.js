@@ -67,6 +67,26 @@ export default class Serverest {
         })
     }
 
+    static deletarUsuario( usuarioId ){
+        Serverest.localizarUsuarioComId( usuarioId ).then( res => {
+            cy.contractValidation( res, 'get-usuarios/id', 200 )
+        })
+
+        return cy.request({
+            method: 'DELETE',
+            url: URL_USUARIOS + '/' + usuarioId,
+            failOnStatusCode: true
+        })
+    }
+
+    static deletarUsuarioNaoExiste( id ){
+        return cy.request({
+            method: 'DELETE',
+            url: URL_USUARIOS + '/' + id,
+            failOnStatusCode: true
+        })
+    }
+
     static buscarUsuarios(){
         return cy.request( URL_USUARIOS )
     }
@@ -90,6 +110,16 @@ export default class Serverest {
         })
     }
 
+    static buscarEmailAleatorio(){
+        this.buscarUsuarios().then( res => {
+            cy.wrap({
+                "email": res.body.usuarios[0].email
+            }).as('usuarioEmail')
+            
+            Cypress.env('usuarioEmail', res.body.usuarios[0].email)
+        })
+    }
+
     static localizarUsuarioComId( usuarioId ){
         return cy.request( URL_USUARIOS + '/' + usuarioId )
     }
@@ -102,6 +132,18 @@ export default class Serverest {
             url: URL_LOGIN,
             failOnStatusCode: true,
             body: usuario
+        })
+    }
+
+    static loginSemSucesso( usuarioEmail ){
+        return cy.request({
+            method: 'POST',
+            url: URL_LOGIN,
+            failOnStatusCode: false,
+            body: {
+                "email": usuarioEmail,
+                "password": "EssaSenhaNaoDeveFuncionarNunca"
+            }
         })
     }
 

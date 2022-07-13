@@ -23,7 +23,7 @@ describe('Casos de teste do fluxo principal', () =>{
             let usuarioLogin = Cypress.env( 'usuarioLoginFluxo' )
 
             Serverest.login( usuarioLogin ).then( res => {
-                cy.contractValidation( res, 'get-login', 200 )
+                cy.contractValidation( res, 'post-login', 200 )
                 ValidaServerest.ValidaLogin( res )
                 Serverest.salvarBearer( res )
             })

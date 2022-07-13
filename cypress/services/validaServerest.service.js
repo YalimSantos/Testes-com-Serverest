@@ -17,10 +17,22 @@ export default class ValidaServerest {
         expect( res.body.message ).to.be.eq( 'Registro alterado com sucesso' )
     }
 
+    static validarDeletarUsuario( res ){
+        expect( res.body.message ).to.be.eq( 'Registro excluído com sucesso' )
+    }
+
+    static ValidarDeletarUsuarioNaoExiste( res ){
+        expect( res.body.message ).to.be.eq( 'Nenhum registro excluído' )
+    }
+
     // login //
 
     static ValidaLogin( res ){
         expect( res.body.message ).to.be.eq( 'Login realizado com sucesso' )
+    }
+
+    static ValidaLoginSemSucesso( res ){
+        expect( res.body.message ).to.be.eq( 'Email e/ou senha inválidos' )
     }
 
     // produtos //

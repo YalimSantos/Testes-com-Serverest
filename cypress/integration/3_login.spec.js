@@ -3,21 +3,33 @@
 import Serverest from '../services/serverest.service'
 import ValidaServerest from '../services/validaServerest.service'
 
-describe('Casos de teste da rota /login da API Serverest', () => {
+describe('Casos de teste da rota /login', () => {
     
-    it('Deve realizar o login com sucesso', () => {
+    it('T12 - Realizar login com sucesso', () => {
         Serverest.buscarUsuarioAleatorio()
         cy.get('@usuarioLogin').then( usuario => {
             Serverest.login( usuario ).then( res => {
-                cy.contractValidation( res, 'get-login', 200 )
+                cy.contractValidation( res, 'post-login', 200 )
                 ValidaServerest.ValidaLogin( res )
                 Serverest.salvarBearer( res )
             })
         })
     })
 
+    it('T13 - Falhar ao tentar realizar um login', () => {
+        Serverest.buscarEmailAleatorio()
+        cy.get('@usuarioEmail').then( usuario => {
+            let usuarioEmail = JSON.stringify(usuario.email)
+
+            Serverest.loginSemSucesso( usuarioEmail.slice(1, usuarioEmail.length -2) ).then( res => {
+                cy.contractValidation( res, 'post-login', 400 )
+                ValidaServerest.ValidaLoginSemSucesso( res )
+            })
+        })
+    })
+
     // Salva para fazer o login no teste abaixo desse
-    it('Deve buscar e salvar um usuário em um arquivo json', () => {
+    it('Teste para aprender conteúdo - Deve buscar e salvar um usuário em um arquivo json', () => {
         Serverest.buscarUsuarios().then( res => {
             cy.contractValidation( res, 'get-usuarios', 200 )
             cy.writeFile('./cypress/fixtures/usuario.json', res.body.usuarios[0])
@@ -25,7 +37,7 @@ describe('Casos de teste da rota /login da API Serverest', () => {
         })
     })
 
-    it('Deve buscar o usuário de um arquivo json', () => {
+    it('Teste para aprender conteúdo - Deve buscar o usuário de um arquivo json', () => {
         cy.fixture('usuario.json').then( json => {
             let usuario = {
                 'email': json.email,
@@ -33,7 +45,7 @@ describe('Casos de teste da rota /login da API Serverest', () => {
             }
 
             Serverest.login( usuario ).then( res => {
-                cy.contractValidation( res, 'get-login', 200 )
+                cy.contractValidation( res, 'post-login', 200 )
                 ValidaServerest.ValidaLogin( res )
                 Serverest.salvarBearer( res )
             })

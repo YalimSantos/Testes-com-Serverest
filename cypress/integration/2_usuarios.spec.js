@@ -47,4 +47,23 @@ describe('Casos de teste da rota /usuarios', () => {
         })    
     })
 
+    it('T06 - Deletar um usuário', () => {
+        Serverest.buscarIdAleatorio()
+        cy.get('@usuarioId').then( usuarioId => {
+            Serverest.deletarUsuario( usuarioId._id ).then( res => {
+                cy.contractValidation( res, 'delete-usuarios/id', 200 )
+                ValidaServerest.validarDeletarUsuario( res )
+            })
+        })     
+    })
+
+    it('T07 - Deletar um usuário que não exista', () => {
+        let id = Factory.gerarId()
+
+        Serverest.deletarUsuarioNaoExiste( id ).then( res => {
+            cy.contractValidation( res, 'delete-usuarios/id', 200 )
+            ValidaServerest.ValidarDeletarUsuarioNaoExiste( res )
+        })    
+    })
+
 })
