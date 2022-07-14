@@ -45,6 +45,18 @@ export default class ValidaServerest {
         expect( res.body.message ).to.be.eq( 'Cadastro realizado com sucesso' )
     }
 
+    static validarModificarProduto( res ){
+        expect( res.body.message ).to.be.eq( 'Registro alterado com sucesso' )
+    }
+
+    static validarDeletarProduto( res ){
+        expect( res.body.message ).to.be.eq( 'Registro excluído com sucesso' )
+    }
+
+    static ValidarDeletarProdutoNaoExiste( res ){
+        expect( res.body.message ).to.be.eq( 'Nenhum registro excluído' )
+    }
+
     // carrinhos // 
 
     static validaBuscaDeCarrinhos( res ){

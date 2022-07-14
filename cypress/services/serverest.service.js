@@ -180,6 +180,78 @@ export default class Serverest {
         })
     }
 
+    static modificarProduto( produtoId ){
+        Serverest.localizarProdutoComId( produtoId ).then( res => {
+            cy.contractValidation( res, 'get-produtos/id', 200 )
+        })
+
+        let produto = Factory.gerarProduto()
+
+        return cy.request({
+            method: 'PUT',
+            url: URL_PRODUTOS + '/' + produtoId,
+            failOnStatusCode: true,
+            auth: {
+                bearer: Cypress.env( 'bearer' )
+            },
+            body: produto
+        })
+    }
+
+    static criarProdutoComPut( produtoId ){
+        let produto = Factory.gerarProduto()
+
+        return cy.request({
+            method: 'PUT',
+            url: URL_PRODUTOS + '/' + produtoId,
+            failOnStatusCode: true,
+            auth: {
+                bearer: Cypress.env( 'bearer' )
+            },
+            body: produto
+        })
+    }
+
+    static deletarProduto( produtoId ){
+        Serverest.localizarProdutoComId( produtoId ).then( res => {
+            cy.contractValidation( res, 'get-produtos/id', 200 )
+        })
+
+        return cy.request({
+            method: 'DELETE',
+            url: URL_PRODUTOS + '/' + produtoId,
+            failOnStatusCode: true,
+            auth: {
+                bearer: Cypress.env( 'bearer' )
+            }
+        })
+    }
+
+    static deletarProdutoNaoExiste( id ){
+        return cy.request({
+            method: 'DELETE',
+            url: URL_PRODUTOS + '/' + id,
+            failOnStatusCode: true,
+            auth: {
+                bearer: Cypress.env( 'bearer' )
+            }
+        })
+    }
+
+    static buscarIdProdutoAleatorio(){
+        this.buscarProdutos().then( res => {
+            cy.wrap({
+                "_id": res.body.produtos[0]._id
+            }).as('produtoId')
+            
+            Cypress.env('produtoId', res.body.produtos[0]._id)
+        })
+    }
+
+    static localizarProdutoComId( produtoId ){
+        return cy.request( URL_PRODUTOS + '/' + produtoId )
+    }
+
     // carrinhos //
 
     static buscarCarrinhos(){
@@ -221,7 +293,7 @@ export default class Serverest {
         Cypress.env('carrinhoId', carrinhoId)
     }
 
-    static localizarCarrinhoDeUsuario( carrinhoId )
+    static localizarCarrinhoComId( carrinhoId )
     {
         return cy.request( URL_CARRINHOS + '/' + carrinhoId )
     }
