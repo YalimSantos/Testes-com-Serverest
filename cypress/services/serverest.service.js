@@ -5,6 +5,7 @@ const URL_LOGIN     = '/login'
 const URL_PRODUTOS  = '/produtos'
 const URL_CARRINHOS = '/carrinhos'
 const URL_CARRINHOS_CONCLUIR_COMPRA = '/carrinhos/concluir-compra'
+const URL_CARRINHOS_CANCELAR_COMPRA = '/carrinhos/cancelar-compra'
 
 export default class Serverest {
 
@@ -151,6 +152,12 @@ export default class Serverest {
         Cypress.env('bearer', res.body.authorization.slice(7))
     }
 
+    static gerarBearerInexistente(){
+        let id = Factory.gerarId()
+
+        Cypress.env('bearer', id)
+    }
+
     // produtos //
 
     static buscarProdutoAleatorio(){
@@ -241,7 +248,8 @@ export default class Serverest {
     static buscarIdProdutoAleatorio(){
         this.buscarProdutos().then( res => {
             cy.wrap({
-                "_id": res.body.produtos[0]._id
+                // Na documentação seria res.body.usuarios, mas fiz assim para funcionar em outros testes
+                "_id": res.body.produtos[0]._id 
             }).as('produtoId')
             
             Cypress.env('produtoId', res.body.produtos[0]._id)
@@ -277,6 +285,49 @@ export default class Serverest {
         })
     }
 
+    static cadastrarCarrinhoPodeFalhar( produtoId, quantidade = 1 ){
+        return cy.request({
+            method: 'POST',
+            url: URL_CARRINHOS,
+            failOnStatusCode: false,
+            auth: {
+                bearer: Cypress.env( 'bearer' )
+            },
+            body: {
+                "produtos": [
+                  {
+                    "idProduto": produtoId,
+                    "quantidade": quantidade
+                  }
+                ]
+              }
+        })
+    }
+
+    static cadastrarCarrinhoDoisProdutosPodeFalhar( produtoId ){
+        return cy.request({
+            method: 'POST',
+            url: URL_CARRINHOS,
+            failOnStatusCode: false,
+            auth: {
+                bearer: Cypress.env( 'bearer' )
+            },
+            body: {
+                "produtos": [
+                  {
+                    "idProduto": produtoId,
+                    "quantidade": 1
+                  },
+                  {
+                    "idProduto": produtoId,
+                    "quantidade": 1
+                  }
+                ]
+              }
+              
+        })
+    }
+
     static concluirCompra(){
         return cy.request({
             method: 'DELETE',
@@ -288,6 +339,49 @@ export default class Serverest {
         })
     }
 
+    static concluirCompraPodeFalhar(){
+        return cy.request({
+            method: 'DELETE',
+            url: URL_CARRINHOS_CONCLUIR_COMPRA,
+            failOnStatusCode: false,
+            auth: {
+                bearer: Cypress.env( 'bearer' )
+            }
+        })
+    }
+
+    static cancelarCompra(){
+        return cy.request({
+            method: 'DELETE',
+            url: URL_CARRINHOS_CANCELAR_COMPRA,
+            failOnStatusCode: true,
+            auth: {
+                bearer: Cypress.env( 'bearer' )
+            }
+        })
+    }
+
+    static cancelarCompraPodeFalhar(){
+        return cy.request({
+            method: 'DELETE',
+            url: URL_CARRINHOS_CANCELAR_COMPRA,
+            failOnStatusCode: false,
+            auth: {
+                bearer: Cypress.env( 'bearer' )
+            }
+        })
+    }
+
+    static buscarIdCarrinhoAleatorio(){
+        this.buscarCarrinhos().then( res => {
+            cy.wrap({
+                "_id": res.body.carrinhos[0]._id 
+            }).as('carrinhoId')
+            
+            Cypress.env('carrinhoId', res.body.carrinhos[0]._id)
+        })
+    }
+
     static SalvaIdDeCarrinho( carrinhoId )
     {
         Cypress.env('carrinhoId', carrinhoId)
@@ -296,6 +390,15 @@ export default class Serverest {
     static localizarCarrinhoComId( carrinhoId )
     {
         return cy.request( URL_CARRINHOS + '/' + carrinhoId )
+    }
+
+    static localizarCarrinhoComIdPodeFalhar( carrinhoId )
+    {
+        return cy.request({
+            method: 'GET',
+            url: URL_CARRINHOS + '/' + carrinhoId,
+            failOnStatusCode: false
+        })
     }
 
 }

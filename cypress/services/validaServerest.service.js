@@ -35,6 +35,10 @@ export default class ValidaServerest {
         expect( res.body.message ).to.be.eq( 'Email e/ou senha inválidos' )
     }
 
+    static validaTokenInexistente( res ){
+        expect( res.body.message ).to.be.eq( 'Token de acesso ausente, inválido, expirado ou usuário do token não existe mais' )
+    }
+
     // produtos //
 
     static validaBuscaDeProdutos( res ){
@@ -67,8 +71,40 @@ export default class ValidaServerest {
         expect( res.body.message ).to.be.eq( 'Cadastro realizado com sucesso' )
     }
 
-    static validaConclusaoDeCompra( res ){
+    static validaConclusaoDeCarrinho( res ){
         expect( res.body.message ).to.be.eq( 'Registro excluído com sucesso' )
+    }
+
+    static validaConclusaoDeCarrinhoSemCarrinho( res ){
+        expect( res.body.message ).to.be.eq( 'Não foi encontrado carrinho para esse usuário' )
+    }
+
+    static validaCancelamentoDeCarrinho( res ){
+        expect( res.body.message ).to.be.eq( 'Registro excluído com sucesso. Estoque dos produtos reabastecido' )
+    }
+
+    static validaCancelamentoDeCarrinhoSemCarrinho( res ){
+        expect( res.body.message ).to.be.eq( 'Não foi encontrado carrinho para esse usuário' )
+    }
+
+    static validaBuscaDeCarrinhosSemSucesso( res ){
+        expect( res.body.message ).to.be.eq( 'Carrinho não encontrado' )
+    }
+
+    static validaCadastroDeCarrinhoComDoisProdutosIguais( res ){
+        expect( res.body.message ).to.be.eq( 'Não é permitido possuir produto duplicado' )
+    }
+
+    static validaCadastroDeCarrinhoComCarrinhoJaCadastrado( res ){
+        expect( res.body.message ).to.be.eq( 'Não é permitido ter mais de 1 carrinho' )
+    }
+
+    static validaCadastroDeCarrinhoComProdutoNaoExiste( res ){
+        expect( res.body.message ).to.be.eq( 'Produto não encontrado' )
+    }
+
+    static validaCadastroDeCarrinhoComProdutoSemQuantidade( res ){
+        expect( res.body.message ).to.be.eq( 'Produto não possui quantidade suficiente' )
     }
 
 }

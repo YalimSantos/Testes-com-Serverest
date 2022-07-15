@@ -44,7 +44,7 @@ describe('Casos de teste do fluxo principal', () =>{
         it('T34 - Concluir compra de um carrinho', () => {
             Serverest.concluirCompra().then( res => {
                 cy.contractValidation( res, 'delete-carrinhos/concluir-compra', 200 )
-                ValidaServerest.validaConclusaoDeCompra( res )
+                ValidaServerest.validaConclusaoDeCarrinho( res )
             })
         })
     })

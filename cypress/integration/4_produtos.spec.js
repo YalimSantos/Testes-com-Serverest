@@ -25,13 +25,12 @@ describe('Casos de teste da rota /produtos da API Serverest', () => {
 
     context('T12 - Realizar login com sucesso', () => {
         beforeEach( 'Logar', () => {
-            Serverest.buscarUsuarioAleatorio()
-            cy.get('@usuarioLogin').then( usuario => {
-                Serverest.login( usuario ).then( res => {
-                    cy.contractValidation( res, 'post-login', 200 )
-                    ValidaServerest.ValidaLogin( res )
-                    Serverest.salvarBearer( res )
-                })
+            let usuarioLogin = Cypress.env( 'usuarioLoginFluxo' )
+
+            Serverest.login( usuarioLogin ).then( res => {
+                cy.contractValidation( res, 'post-login', 200 )
+                ValidaServerest.ValidaLogin( res )
+                Serverest.salvarBearer( res )
             })
         })
 
