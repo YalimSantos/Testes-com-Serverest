@@ -80,7 +80,7 @@ export default class ValidaServerest {
     }
 
     static validaCancelamentoDeCarrinho( res ){
-        expect( res.body.message ).to.be.eq( 'Registro excluído com sucesso. Estoque dos produtos reabastecido' )
+        expect( res.body.message ).to.be.eq( 'Registro excluído com sucesso' )
     }
 
     static validaCancelamentoDeCarrinhoSemCarrinho( res ){

@@ -251,8 +251,6 @@ export default class Serverest {
                 // Na documentação seria res.body.usuarios, mas fiz assim para funcionar em outros testes
                 "_id": res.body.produtos[0]._id 
             }).as('produtoId')
-            
-            Cypress.env('produtoId', res.body.produtos[0]._id)
         })
     }
 

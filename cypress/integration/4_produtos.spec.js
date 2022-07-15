@@ -22,10 +22,22 @@ describe('Casos de teste da rota /produtos da API Serverest', () => {
         })
     })
 
+    it('Postando usuário administrador para os testes que precisa de admin', () => {
+        let usuario = Factory.gerarNovoUsuario()
+
+        Serverest.postarNovoUsuarioComParametro( usuario ).then( res => {
+            cy.contractValidation( res, 'post-usuarios', 201 )
+            ValidaServerest.ValidarPostarNovoUsuario( res )
+            Cypress.env('usuarioAdminLogin', {
+                "email": usuario.email,
+                "password": usuario.password
+            })
+        })
+    })
 
     context('T12 - Realizar login com sucesso', () => {
-        beforeEach( 'Logar', () => {
-            let usuarioLogin = Cypress.env( 'usuarioLoginFluxo' )
+        before( 'Logar', () => {
+            let usuarioLogin = Cypress.env( 'usuarioAdminLogin' )
 
             Serverest.login( usuarioLogin ).then( res => {
                 cy.contractValidation( res, 'post-login', 200 )
@@ -38,6 +50,7 @@ describe('Casos de teste da rota /produtos da API Serverest', () => {
             Serverest.cadastrarProduto().then( res => {
                 cy.contractValidation( res, 'post-produtos', 201 )
                 ValidaServerest.validaCadastroDeProduto( res )
+                Cypress.env( 'produtoId', res.body._id )
             })
         })
 
@@ -61,12 +74,11 @@ describe('Casos de teste da rota /produtos da API Serverest', () => {
         })
 
         it('T19 - Deletar um produto', () => {
-            Serverest.buscarIdProdutoAleatorio()
-            cy.get('@produtoId').then( produtoId => {
-                Serverest.deletarProduto( produtoId._id ).then( res => {
-                    cy.contractValidation( res, 'delete-produtos/id', 200 )
-                    ValidaServerest.validarDeletarProduto( res )
-                })
+            let produtoId = Cypress.env( 'produtoId' )
+
+            Serverest.deletarProduto( produtoId ).then( res => {
+                cy.contractValidation( res, 'delete-produtos/id', 200 )
+                ValidaServerest.validarDeletarProduto( res )
             })     
         })
 
