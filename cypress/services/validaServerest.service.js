@@ -5,106 +5,142 @@ export default class ValidaServerest {
     // validar o cadastro de novos usuários
     // Validar o login
 
-    static ValidarBuscaDeUsuarios( res ){
+    static ValidarBuscaDeUsuarios( res, status ){
         expect( res.body.quantidade ).to.be.greaterThan( 0 )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static ValidarPostarNovoUsuario( res ){
+    static ValidarBuscaDeUsuariosComId( res, status ){
+        expect( res.status ).to.be.eq( status )
+    }
+
+    static ValidarPostarNovoUsuario( res, status ){
         expect( res.body.message ).to.be.eq( 'Cadastro realizado com sucesso' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static validarModificarUsuario( res ){
+    static validarModificarUsuario( res, status ){
         expect( res.body.message ).to.be.eq( 'Registro alterado com sucesso' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static validarDeletarUsuario( res ){
+    static validarDeletarUsuario( res, status ){
         expect( res.body.message ).to.be.eq( 'Registro excluído com sucesso' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static ValidarDeletarUsuarioNaoExiste( res ){
+    static ValidarDeletarUsuarioNaoExiste( res, status ){
         expect( res.body.message ).to.be.eq( 'Nenhum registro excluído' )
+        expect( res.status ).to.be.eq( status )
     }
 
     // login //
 
-    static ValidaLogin( res ){
+    static ValidaLogin( res, status ){
         expect( res.body.message ).to.be.eq( 'Login realizado com sucesso' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static ValidaLoginSemSucesso( res ){
+    static ValidaLoginSemSucesso( res, status ){
         expect( res.body.message ).to.be.eq( 'Email e/ou senha inválidos' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static validaTokenInexistente( res ){
+    static validaTokenInexistente( res, status ){
         expect( res.body.message ).to.be.eq( 'Token de acesso ausente, inválido, expirado ou usuário do token não existe mais' )
+        expect( res.status ).to.be.eq( status )
     }
 
     // produtos //
 
-    static validaBuscaDeProdutos( res ){
+    static validaBuscaDeProdutos( res, status ){
         expect( res.body.quantidade ).to.be.greaterThan( 0 )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static validaCadastroDeProduto( res ){
+    static validaBuscaDeProdutosComId( res, status ){
+        expect( res.status ).to.be.eq( status )
+    }
+
+    static validaCadastroDeProduto( res, status ){
         expect( res.body.message ).to.be.eq( 'Cadastro realizado com sucesso' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static validarModificarProduto( res ){
+    static validarModificarProduto( res, status ){
         expect( res.body.message ).to.be.eq( 'Registro alterado com sucesso' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static validarDeletarProduto( res ){
+    static validarDeletarProduto( res, status ){
         expect( res.body.message ).to.be.eq( 'Registro excluído com sucesso' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static ValidarDeletarProdutoNaoExiste( res ){
+    static ValidarDeletarProdutoNaoExiste( res, status ){
         expect( res.body.message ).to.be.eq( 'Nenhum registro excluído' )
+        expect( res.status ).to.be.eq( status )
     }
 
     // carrinhos // 
 
-    static validaBuscaDeCarrinhos( res ){
+    static validaBuscaDeCarrinhos( res, status ){
         expect( res.body.quantidade ).to.be.greaterThan( 0 )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static validaCadastroDeCarrinho( res ){
+    static validaBuscaDeCarrinhosComId( res, status ){
+        expect( res.status ).to.be.eq( status )
+    }
+
+    static validaCadastroDeCarrinho( res, status ){
         expect( res.body.message ).to.be.eq( 'Cadastro realizado com sucesso' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static validaConclusaoDeCarrinho( res ){
+    static validaConclusaoDeCarrinho( res, status ){
         expect( res.body.message ).to.be.eq( 'Registro excluído com sucesso' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static validaConclusaoDeCarrinhoSemCarrinho( res ){
+    static validaConclusaoDeCarrinhoSemCarrinho( res, status ){
         expect( res.body.message ).to.be.eq( 'Não foi encontrado carrinho para esse usuário' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static validaCancelamentoDeCarrinho( res ){
+    static validaCancelamentoDeCarrinho( res, status ){
         expect( res.body.message ).to.be.eq( 'Registro excluído com sucesso' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static validaCancelamentoDeCarrinhoSemCarrinho( res ){
+    static validaCancelamentoDeCarrinhoSemCarrinho( res, status ){
         expect( res.body.message ).to.be.eq( 'Não foi encontrado carrinho para esse usuário' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static validaBuscaDeCarrinhosSemSucesso( res ){
+    static validaBuscaDeCarrinhosSemSucesso( res, status ){
         expect( res.body.message ).to.be.eq( 'Carrinho não encontrado' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static validaCadastroDeCarrinhoComDoisProdutosIguais( res ){
+    static validaCadastroDeCarrinhoComDoisProdutosIguais( res, status ){
         expect( res.body.message ).to.be.eq( 'Não é permitido possuir produto duplicado' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static validaCadastroDeCarrinhoComCarrinhoJaCadastrado( res ){
+    static validaCadastroDeCarrinhoComCarrinhoJaCadastrado( res, status ){
         expect( res.body.message ).to.be.eq( 'Não é permitido ter mais de 1 carrinho' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static validaCadastroDeCarrinhoComProdutoNaoExiste( res ){
+    static validaCadastroDeCarrinhoComProdutoNaoExiste( res, status ){
         expect( res.body.message ).to.be.eq( 'Produto não encontrado' )
+        expect( res.status ).to.be.eq( status )
     }
 
-    static validaCadastroDeCarrinhoComProdutoSemQuantidade( res ){
+    static validaCadastroDeCarrinhoComProdutoSemQuantidade( res, status ){
         expect( res.body.message ).to.be.eq( 'Produto não possui quantidade suficiente' )
+        expect( res.status ).to.be.eq( status )
     }
 
 }

@@ -10,7 +10,7 @@ describe('Casos de teste do fluxo principal', () =>{
     it('T03 - Postar um novo usuário', () => {
         Serverest.postarNovoUsuarioComParametro( usuario ).then( res => {
             cy.contractValidation( res, 'post-usuarios', 201 )
-            ValidaServerest.ValidarPostarNovoUsuario( res )
+            ValidaServerest.ValidarPostarNovoUsuario( res, 201 )
             Cypress.env('usuarioLoginFluxo', {
                 "email": usuario.email,
                 "password": usuario.password
@@ -24,7 +24,7 @@ describe('Casos de teste do fluxo principal', () =>{
 
             Serverest.login( usuarioLogin ).then( res => {
                 cy.contractValidation( res, 'post-login', 200 )
-                ValidaServerest.ValidaLogin( res )
+                ValidaServerest.ValidaLogin( res, 200 )
                 Serverest.salvarBearer( res )
             })
             
@@ -35,7 +35,7 @@ describe('Casos de teste do fluxo principal', () =>{
             cy.get('@produtoId').then( produtoId => {
                 Serverest.cadastrarCarrinho( produtoId._id ).then( res => {
                     cy.contractValidation( res, 'post-carrinhos', 201 )
-                    ValidaServerest.validaCadastroDeCarrinho( res )
+                    ValidaServerest.validaCadastroDeCarrinho( res, 201 )
                     Serverest.SalvaIdDeCarrinho( res.body._id )
                 })
             })
@@ -44,7 +44,7 @@ describe('Casos de teste do fluxo principal', () =>{
         it('T34 - Concluir compra de um carrinho', () => {
             Serverest.concluirCompra().then( res => {
                 cy.contractValidation( res, 'delete-carrinhos/concluir-compra', 200 )
-                ValidaServerest.validaConclusaoDeCarrinho( res )
+                ValidaServerest.validaConclusaoDeCarrinho( res, 200 )
             })
         })
     })

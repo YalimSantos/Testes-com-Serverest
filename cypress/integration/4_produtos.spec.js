@@ -9,7 +9,7 @@ describe('Casos de teste da rota /produtos da API Serverest', () => {
     it('T14 - Buscar todos os produtos', () => {
         Serverest.buscarProdutos().then( res => {
             cy.contractValidation( res, 'get-produtos', 200 )
-            ValidaServerest.validaBuscaDeProdutos( res )
+            ValidaServerest.validaBuscaDeProdutos( res, 200 )
         })
     })
 
@@ -18,6 +18,7 @@ describe('Casos de teste da rota /produtos da API Serverest', () => {
         cy.get( '@produtoId' ).then( produtoId => {
             Serverest.localizarProdutoComId( produtoId._id ).then( res => {
                 cy.contractValidation( res, 'get-produtos/id', 200 )
+                ValidaServerest.validaBuscaDeProdutosComId( res, 200 )
             })
         })
     })
@@ -27,7 +28,7 @@ describe('Casos de teste da rota /produtos da API Serverest', () => {
 
         Serverest.postarNovoUsuarioComParametro( usuario ).then( res => {
             cy.contractValidation( res, 'post-usuarios', 201 )
-            ValidaServerest.ValidarPostarNovoUsuario( res )
+            ValidaServerest.ValidarPostarNovoUsuario( res, 201 )
             Cypress.env('usuarioAdminLogin', {
                 "email": usuario.email,
                 "password": usuario.password
@@ -41,7 +42,7 @@ describe('Casos de teste da rota /produtos da API Serverest', () => {
 
             Serverest.login( usuarioLogin ).then( res => {
                 cy.contractValidation( res, 'post-login', 200 )
-                ValidaServerest.ValidaLogin( res )
+                ValidaServerest.ValidaLogin( res, 200 )
                 Serverest.salvarBearer( res )
             })
         })
@@ -49,7 +50,7 @@ describe('Casos de teste da rota /produtos da API Serverest', () => {
         it('T16 - Postar um novo produto', () => {
             Serverest.cadastrarProduto().then( res => {
                 cy.contractValidation( res, 'post-produtos', 201 )
-                ValidaServerest.validaCadastroDeProduto( res )
+                ValidaServerest.validaCadastroDeProduto( res, 201 )
                 Cypress.env( 'produtoId', res.body._id )
             })
         })
@@ -59,7 +60,7 @@ describe('Casos de teste da rota /produtos da API Serverest', () => {
             cy.get('@produtoId').then( produtoId => {
                 Serverest.modificarProduto( produtoId._id ).then( res => {
                     cy.contractValidation( res, 'put-produtos/id', 200 )
-                    ValidaServerest.validarModificarProduto( res )
+                    ValidaServerest.validarModificarProduto( res, 200 )
                 })
             })     
         })
@@ -69,7 +70,7 @@ describe('Casos de teste da rota /produtos da API Serverest', () => {
     
             Serverest.criarProdutoComPut( id ).then( res => {
                 cy.contractValidation( res, 'put-produtos/id', 201 )
-                ValidaServerest.validaCadastroDeProduto( res )
+                ValidaServerest.validaCadastroDeProduto( res, 201 )
             })    
         })
 
@@ -78,7 +79,7 @@ describe('Casos de teste da rota /produtos da API Serverest', () => {
 
             Serverest.deletarProduto( produtoId ).then( res => {
                 cy.contractValidation( res, 'delete-produtos/id', 200 )
-                ValidaServerest.validarDeletarProduto( res )
+                ValidaServerest.validarDeletarProduto( res, 200 )
             })     
         })
 
@@ -87,7 +88,7 @@ describe('Casos de teste da rota /produtos da API Serverest', () => {
     
             Serverest.deletarProdutoNaoExiste( id ).then( res => {
                 cy.contractValidation( res, 'delete-produtos/id', 200 )
-                ValidaServerest.ValidarDeletarProdutoNaoExiste( res )
+                ValidaServerest.ValidarDeletarProdutoNaoExiste( res, 200 )
             })    
         })
 

@@ -10,7 +10,7 @@ describe('Casos de teste da rota /login', () => {
         cy.get('@usuarioLogin').then( usuario => {
             Serverest.login( usuario ).then( res => {
                 cy.contractValidation( res, 'post-login', 200 )
-                ValidaServerest.ValidaLogin( res )
+                ValidaServerest.ValidaLogin( res, 200 )
                 Serverest.salvarBearer( res )
             })
         })
@@ -23,7 +23,7 @@ describe('Casos de teste da rota /login', () => {
 
             Serverest.loginSemSucesso( usuarioEmail.slice(1, usuarioEmail.length -2) ).then( res => {
                 cy.contractValidation( res, 'post-login', 400 )
-                ValidaServerest.ValidaLoginSemSucesso( res )
+                ValidaServerest.ValidaLoginSemSucesso( res, 400 )
             })
         })
     })
@@ -33,7 +33,7 @@ describe('Casos de teste da rota /login', () => {
         Serverest.buscarUsuarios().then( res => {
             cy.contractValidation( res, 'get-usuarios', 200 )
             cy.writeFile('./cypress/fixtures/usuario.json', res.body.usuarios[0])
-            ValidaServerest.ValidarBuscaDeUsuarios( res )
+            ValidaServerest.ValidarBuscaDeUsuarios( res, 200 )
         })
     })
 
@@ -46,7 +46,7 @@ describe('Casos de teste da rota /login', () => {
 
             Serverest.login( usuario ).then( res => {
                 cy.contractValidation( res, 'post-login', 200 )
-                ValidaServerest.ValidaLogin( res )
+                ValidaServerest.ValidaLogin( res, 200 )
                 Serverest.salvarBearer( res )
             })
         })
