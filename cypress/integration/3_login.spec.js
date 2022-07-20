@@ -29,6 +29,7 @@ describe('Casos de teste da rota /login', () => {
     })
 
     // Salva para fazer o login no teste abaixo desse
+    /*
     it('Teste para aprender conteúdo - Deve buscar e salvar um usuário em um arquivo json', () => {
         Serverest.buscarUsuarios().then( res => {
             cy.contractValidation( res, 'get-usuarios', 200 )
@@ -50,5 +51,5 @@ describe('Casos de teste da rota /login', () => {
                 Serverest.salvarBearer( res )
             })
         })
-    })
+    })*/
 })

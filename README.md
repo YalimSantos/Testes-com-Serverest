@@ -8,6 +8,16 @@ Esse é um projeto de criação de testes automatizados em cima da API Serverest
 A documentação da API pode ser encontrada em: https://serverest.dev/
 <br><br>
 
+## Documentação do Plano de Testes
+A documentação do plano de testes pode ser encontrado em: 
+https://docs.google.com/document/d/1fJH7RANr4voh66hPf2iVnwoelBvkVqlY9txYfSumcHs/edit?usp=sharing
+<br><br>
+
+## Documentação do Relatório de Testes
+A documentação do relatório de testes pode ser encontrado em: 
+https://docs.google.com/document/d/1hPD69fYTlvIp6dsIdX3XMXxmgQi9-tpjSlN6hNQqJhc/edit?usp=sharing
+<br><br>
+
 ## Instalação
 
 - Faça o download ZIP ou clone o repositório com o link abaixo
@@ -76,13 +86,13 @@ O '<b>run cy:open:prod</b>' abrirá a tela do cypress para você fazer os testes
 
 Caso você rode o ``` npm run test ```, no arquivo HTML deve aparecer algo tipo:
 
-![image](https://user-images.githubusercontent.com/63170477/177823745-bf5b03bc-2f18-4b87-96f7-5bdfd48ae15f.png)
+![image](https://user-images.githubusercontent.com/63170477/180006843-b0ec3cb3-b417-48af-9518-e83b2a03efaf.png)
 
 <br>
 
 Caso você rode o ``` npm cy:open:prod ``` e execute um dos testes, deve aparecer algo tipo:
 
-![image](https://user-images.githubusercontent.com/63170477/177825882-b57d3728-3976-4955-b370-168bcf7e94b3.png)
+![image](https://user-images.githubusercontent.com/63170477/180007241-0d07fb96-d42d-4c1a-bb2a-6fc3354ca368.png)
 
 <br>
 
@@ -126,5 +136,5 @@ cypress/reports/mochareports/report.html
 
 ## Agradecimentos especiais
 
-- Alice Zeidler
+- Felipe Ripplinger
 - Matheus Locatelli

@@ -1,15 +1,15 @@
 {
   "stats": {
-    "suites": 2,
+    "suites": 1,
     "tests": 2,
-    "passes": 2,
+    "passes": 1,
     "pending": 0,
-    "failures": 0,
-    "start": "2022-07-08T17:42:51.133Z",
-    "end": "2022-07-08T17:42:52.203Z",
-    "duration": 1070,
+    "failures": 1,
+    "start": "2022-07-20T14:17:34.113Z",
+    "end": "2022-07-20T14:17:35.378Z",
+    "duration": 1265,
     "testsRegistered": 2,
-    "passPercent": 100,
+    "passPercent": 50,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,89 +18,73 @@
   },
   "results": [
     {
-      "uuid": "d34a9f50-989f-4bce-b95e-a91d69291a85",
+      "uuid": "d0455a39-063e-44e1-9eb6-299c98bc53df",
       "title": "",
-      "fullFile": "cypress/integration/produtos.spec.js",
-      "file": "cypress/integration/produtos.spec.js",
+      "fullFile": "cypress/integration/3_login.spec.js",
+      "file": "cypress/integration/3_login.spec.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "e2df562f-17d3-4cde-9f11-011315fdbfa8",
-          "title": "Casos de teste da rota /produtos da API Serverest",
+          "uuid": "9d4a7f05-892c-4060-adf5-766ba092e88e",
+          "title": "Casos de teste da rota /login",
           "fullFile": "",
           "file": "",
           "beforeHooks": [],
           "afterHooks": [],
           "tests": [
             {
-              "title": "Deve buscar todos os produtos cadastrados",
-              "fullTitle": "Casos de teste da rota /produtos da API Serverest Deve buscar todos os produtos cadastrados",
+              "title": "T12 - Realizar login com sucesso",
+              "fullTitle": "Casos de teste da rota /login T12 - Realizar login com sucesso",
               "timedOut": null,
-              "duration": 359,
+              "duration": 499,
               "state": "passed",
               "speed": "fast",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "_serverest.default.buscarProdutos().then(res => {\n  cy.contractValidation(res, 'get-produtos', 200);\n  _validaServerest.default.validaBuscaDeProdutos(res);\n});",
+              "code": "_serverest.default.buscarUsuarioAleatorio();\ncy.get('@usuarioLogin').then(usuario => {\n  _serverest.default.login(usuario).then(res => {\n    cy.contractValidation(res, 'post-login', 200);\n    _validaServerest.default.ValidaLogin(res, 200);\n    _serverest.default.salvarBearer(res);\n  });\n});",
               "err": {},
-              "uuid": "1532d5ad-368d-44b6-8b64-afa0bf2cdc3a",
-              "parentUUID": "e2df562f-17d3-4cde-9f11-011315fdbfa8",
+              "uuid": "2a6b5e9f-655a-4a3c-ab92-0e40eeb3d812",
+              "parentUUID": "9d4a7f05-892c-4060-adf5-766ba092e88e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "T13 - Falhar ao tentar realizar um login",
+              "fullTitle": "Casos de teste da rota /login T13 - Falhar ao tentar realizar um login",
+              "timedOut": null,
+              "duration": 712,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_serverest.default.buscarEmailAleatorio();\ncy.get('@usuarioEmail').then(usuario => {\n  let usuarioEmail = JSON.stringify(usuario.email);\n  _serverest.default.loginSemSucesso(usuarioEmail.slice(1, usuarioEmail.length - 2)).then(res => {\n    cy.contractValidation(res, 'post-login', 400);\n    _validaServerest.default.ValidaLoginSemSucesso(res, 400);\n  });\n});",
+              "err": {
+                "message": "AssertionError: expected 401 to equal 400",
+                "estack": "AssertionError: expected 401 to equal 400\n    at Function.ValidaLoginSemSucesso (https://serverest.dev/__cypress/tests?p=cypress\\integration\\3_login.spec.js:691:30)\n    at Context.eval (https://serverest.dev/__cypress/tests?p=cypress\\integration\\3_login.spec.js:202:34)",
+                "diff": "- 401\n+ 400\n"
+              },
+              "uuid": "367c7f9e-2a9d-419e-9159-1c821550e659",
+              "parentUUID": "9d4a7f05-892c-4060-adf5-766ba092e88e",
               "isHook": false,
               "skipped": false
             }
           ],
-          "suites": [
-            {
-              "uuid": "cfe765c3-25b0-488e-a5f9-934aa1b5c830",
-              "title": "Logar com sucesso",
-              "fullFile": "",
-              "file": "",
-              "beforeHooks": [],
-              "afterHooks": [],
-              "tests": [
-                {
-                  "title": "Deve postar um novo produto",
-                  "fullTitle": "Casos de teste da rota /produtos da API Serverest Logar com sucesso Deve postar um novo produto",
-                  "timedOut": null,
-                  "duration": 677,
-                  "state": "passed",
-                  "speed": "fast",
-                  "pass": true,
-                  "fail": false,
-                  "pending": false,
-                  "context": null,
-                  "code": "_serverest.default.cadastrarProduto().then(res => {\n  cy.contractValidation(res, 'post-produtos', 201);\n  _validaServerest.default.validaCadastroDeProduto(res);\n});",
-                  "err": {},
-                  "uuid": "c2a140ac-1120-471e-8f99-0805eb3875c5",
-                  "parentUUID": "cfe765c3-25b0-488e-a5f9-934aa1b5c830",
-                  "isHook": false,
-                  "skipped": false
-                }
-              ],
-              "suites": [],
-              "passes": [
-                "c2a140ac-1120-471e-8f99-0805eb3875c5"
-              ],
-              "failures": [],
-              "pending": [],
-              "skipped": [],
-              "duration": 677,
-              "root": false,
-              "rootEmpty": false,
-              "_timeout": 2000
-            }
-          ],
+          "suites": [],
           "passes": [
-            "1532d5ad-368d-44b6-8b64-afa0bf2cdc3a"
+            "2a6b5e9f-655a-4a3c-ab92-0e40eeb3d812"
           ],
-          "failures": [],
+          "failures": [
+            "367c7f9e-2a9d-419e-9159-1c821550e659"
+          ],
           "pending": [],
           "skipped": [],
-          "duration": 359,
+          "duration": 1211,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
