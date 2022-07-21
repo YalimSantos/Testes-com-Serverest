@@ -10,12 +10,16 @@ A documentação da API pode ser encontrada em: https://serverest.dev/
 
 ## Documentação do Plano de Testes
 A documentação do plano de testes pode ser encontrado em: 
-https://docs.google.com/document/d/1fJH7RANr4voh66hPf2iVnwoelBvkVqlY9txYfSumcHs/edit?usp=sharing
+```
+documents/Plano de Testes.pdf
+```
 <br><br>
 
 ## Documentação do Relatório de Testes
 A documentação do relatório de testes pode ser encontrado em: 
-https://docs.google.com/document/d/1hPD69fYTlvIp6dsIdX3XMXxmgQi9-tpjSlN6hNQqJhc/edit?usp=sharing
+```
+documents/Relatório de Testes.pdf
+```
 <br><br>
 
 ## Instalação

@@ -279,7 +279,7 @@ export default class Serverest {
                     "quantidade": 1
                   }
                 ]
-              }
+            }
         })
     }
 
