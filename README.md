@@ -140,5 +140,6 @@ cypress/reports/mochareports/report.html
 
 ## Agradecimentos especiais
 
+- Bruno Trojahn
 - Felipe Ripplinger
 - Matheus Locatelli
