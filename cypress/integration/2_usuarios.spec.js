@@ -26,6 +26,7 @@ describe('Casos de teste da rota /usuarios', () => {
         Serverest.postarNovoUsuario().then( res => {
             cy.contractValidation( res, 'post-usuarios', 201 )
             ValidaServerest.ValidarPostarNovoUsuario( res, 201 )
+            Cypress.env('usuarioNovoId', res.body._id)
         })
     })
 
@@ -49,13 +50,12 @@ describe('Casos de teste da rota /usuarios', () => {
     })
 
     it('T06 - Deletar um usuário', () => {
-        Serverest.buscarIdAleatorio()
-        cy.get('@usuarioId').then( usuarioId => {
-            Serverest.deletarUsuario( usuarioId._id ).then( res => {
-                cy.contractValidation( res, 'delete-usuarios/id', 200 )
-                ValidaServerest.validarDeletarUsuario( res, 200 )
-            })
-        })     
+        let usuarioId = Cypress.env('usuarioNovoId')
+
+        Serverest.deletarUsuario( usuarioId ).then( res => {
+            cy.contractValidation( res, 'delete-usuarios/id', 200 )
+            ValidaServerest.validarDeletarUsuario( res, 200 )
+        })         
     })
 
     it('T07 - Deletar um usuário que não exista', () => {
