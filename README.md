@@ -1,4 +1,4 @@
-# Logical Forest Serverest
+# Testes com Serverest
 
 Esse é um projeto de criação de testes automatizados em cima da API Serverest
 <br><br>
@@ -137,9 +137,3 @@ cypress/fixtures/factory.js
 cypress/reports/mochareports/report.html
 ```
 <br>
-
-## Agradecimentos especiais
-
-- Bruno Trojahn
-- Felipe Ripplinger
-- Matheus Locatelli
