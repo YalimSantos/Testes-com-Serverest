@@ -1,17 +1,18 @@
 {
-    "$schema": "https://on.cypress.io/cypress.schema.json",
-    "video": false,
-    "chromeWebSecurity": false,
-    "numTestsKeptInMemory": 5,
-    "reporter": "cypress-multi-reporters",
-    "reporterOptions": {
-        "reporterEnabled": "mochawesome",
-        "mochawesomeReporterOptions": {
-            "reportDir": "cypress/reports/mocha",
-            "quite": true,
-            "overwrite": false,
-            "html": false,
-            "json": true
-        }
+  "$schema": "https://on.cypress.io/cypress.schema.json",
+  "video": false,
+  "chromeWebSecurity": false,
+  "numTestsKeptInMemory": 5,
+  "reporter": "cypress-multi-reporters",
+  "reporterOptions": {
+    "reporterEnabled": "mochawesome",
+    "mochawesomeReporterOptions": {
+      "reportDir": "cypress/reports/mocha",
+      "quite": true,
+      "overwrite": false,
+      "html": false,
+      "json": true
     }
+  },
+  "projectId": "s3ciu2"
 }

@@ -7,11 +7,11 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:open:prod": "cypress open --env configFile=prod",
-    "cy:run:prod": "cypress run --env configFile=prod",
+    "cy:run:prod": "cypress run --env configFile=prod --record --key 9912af4e-bc19-4f24-bbd2-2c62cbd3b6ff",
 
     "clean:reports": "node ./cypress/cypress-report-clean.js",
     "pretest": "npm run clean:reports",
-    "scripts": "cypress run --env configFile=prod",
+    "scripts": "cypress run --env configFile=prod --record --key 9912af4e-bc19-4f24-bbd2-2c62cbd3b6ff",
     "combine-reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",
     "generate-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports",
     "posttest": "npm run combine-reports && npm run generate-report",
