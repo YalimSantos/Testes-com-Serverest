@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2022-09-27T16:47:35.579Z",
-    "end": "2022-09-27T16:47:37.064Z",
-    "duration": 1485,
+    "start": "2022-09-27T17:07:37.833Z",
+    "end": "2022-09-27T17:07:39.227Z",
+    "duration": 1394,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "ed0fc768-611d-4f3d-9c63-daaaaa18fe41",
+      "uuid": "a454d874-8768-438a-8638-1a1acd2dcfcb",
       "title": "",
       "fullFile": "cypress/integration/1_fluxoPrincipal.spec.js",
       "file": "cypress/integration/1_fluxoPrincipal.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "4f049e4f-bff7-4e29-bb33-114b43544c5c",
+          "uuid": "5f280b70-a630-487d-89e0-e5b94b401fb6",
           "title": "Casos de teste do fluxo principal",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "T03 - Postar um novo usuário",
               "fullTitle": "Casos de teste do fluxo principal T03 - Postar um novo usuário",
               "timedOut": null,
-              "duration": 527,
+              "duration": 512,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,15 +47,15 @@
               "context": null,
               "code": "_serverest.default.postarNovoUsuarioComParametro(usuario).then(res => {\n  cy.contractValidation(res, 'post-usuarios', 201);\n  _validaServerest.default.ValidarPostarNovoUsuario(res, 201);\n  Cypress.env('usuarioLoginFluxo', {\n    \"email\": usuario.email,\n    \"password\": usuario.password\n  });\n});",
               "err": {},
-              "uuid": "027fb0c3-689d-408d-b5d9-1a2f04e9b8a5",
-              "parentUUID": "4f049e4f-bff7-4e29-bb33-114b43544c5c",
+              "uuid": "a7c47fbe-bacd-4908-b25e-06ae8fb8ca87",
+              "parentUUID": "5f280b70-a630-487d-89e0-e5b94b401fb6",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [
             {
-              "uuid": "516b7229-76ba-411b-bd52-64e6ff9d4b1b",
+              "uuid": "3df64ff8-3b41-49db-9404-aad14b4a2ac1",
               "title": "T12 - Realizar login com sucesso",
               "fullFile": "",
               "file": "",
@@ -66,7 +66,7 @@
                   "title": "T33 - Postar um novo carrinho",
                   "fullTitle": "Casos de teste do fluxo principal T12 - Realizar login com sucesso T33 - Postar um novo carrinho",
                   "timedOut": null,
-                  "duration": 694,
+                  "duration": 632,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -75,8 +75,8 @@
                   "context": null,
                   "code": "_serverest.default.buscarProdutoAleatorio();\ncy.get('@produtoId').then(produtoId => {\n  _serverest.default.cadastrarCarrinho(produtoId._id).then(res => {\n    cy.contractValidation(res, 'post-carrinhos', 201);\n    _validaServerest.default.validaCadastroDeCarrinho(res, 201);\n    _serverest.default.SalvaIdDeCarrinho(res.body._id);\n  });\n});",
                   "err": {},
-                  "uuid": "86b44f18-e4c4-4119-b696-91fb18499777",
-                  "parentUUID": "516b7229-76ba-411b-bd52-64e6ff9d4b1b",
+                  "uuid": "233afc1b-75b1-4bd5-ab41-4613be4d9def",
+                  "parentUUID": "3df64ff8-3b41-49db-9404-aad14b4a2ac1",
                   "isHook": false,
                   "skipped": false
                 },
@@ -84,7 +84,7 @@
                   "title": "T34 - Concluir compra de um carrinho",
                   "fullTitle": "Casos de teste do fluxo principal T12 - Realizar login com sucesso T34 - Concluir compra de um carrinho",
                   "timedOut": null,
-                  "duration": 229,
+                  "duration": 225,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -93,33 +93,33 @@
                   "context": null,
                   "code": "_serverest.default.concluirCompra().then(res => {\n  cy.contractValidation(res, 'delete-carrinhos/concluir-compra', 200);\n  _validaServerest.default.validaConclusaoDeCarrinho(res, 200);\n});",
                   "err": {},
-                  "uuid": "16550866-fcc2-429e-8ea8-97bea936a68e",
-                  "parentUUID": "516b7229-76ba-411b-bd52-64e6ff9d4b1b",
+                  "uuid": "d9cb0666-086e-4978-89f5-b2e7bcebfd01",
+                  "parentUUID": "3df64ff8-3b41-49db-9404-aad14b4a2ac1",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "86b44f18-e4c4-4119-b696-91fb18499777",
-                "16550866-fcc2-429e-8ea8-97bea936a68e"
+                "233afc1b-75b1-4bd5-ab41-4613be4d9def",
+                "d9cb0666-086e-4978-89f5-b2e7bcebfd01"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 923,
+              "duration": 857,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             }
           ],
           "passes": [
-            "027fb0c3-689d-408d-b5d9-1a2f04e9b8a5"
+            "a7c47fbe-bacd-4908-b25e-06ae8fb8ca87"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 527,
+          "duration": 512,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

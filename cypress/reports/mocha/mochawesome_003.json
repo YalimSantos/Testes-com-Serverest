@@ -5,9 +5,9 @@
     "passes": 7,
     "pending": 0,
     "failures": 1,
-    "start": "2022-09-27T16:48:07.642Z",
-    "end": "2022-09-27T16:48:11.033Z",
-    "duration": 3391,
+    "start": "2022-09-27T17:08:06.259Z",
+    "end": "2022-09-27T17:08:09.728Z",
+    "duration": 3469,
     "testsRegistered": 8,
     "passPercent": 87.5,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "338cb7d6-0e36-4d28-a9f0-a54a2323c793",
+      "uuid": "52112e79-7040-4e1a-a5c1-0d1bc1d7e9a3",
       "title": "",
       "fullFile": "cypress/integration/4_produtos.spec.js",
       "file": "cypress/integration/4_produtos.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "af4de0d3-ea78-44e5-afef-7cb52e360f73",
+          "uuid": "5f3059e0-42b0-4856-b53a-12ec3d5fce0d",
           "title": "Casos de teste da rota /produtos da API Serverest",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "T14 - Buscar todos os produtos",
               "fullTitle": "Casos de teste da rota /produtos da API Serverest T14 - Buscar todos os produtos",
               "timedOut": null,
-              "duration": 519,
+              "duration": 546,
               "state": "failed",
               "speed": null,
               "pass": false,
@@ -51,8 +51,8 @@
                 "estack": "Error: Erros encontrados na validação de contrato, por favor verifique:  must have required property 'usuarios', but receive object\n\n    at Context.eval (https://serverest.dev/__cypress/tests?p=cypress\\support\\index.js:161:13)",
                 "diff": null
               },
-              "uuid": "8c7c180e-cc28-48bb-8fc8-209925b1708e",
-              "parentUUID": "af4de0d3-ea78-44e5-afef-7cb52e360f73",
+              "uuid": "cac104d8-f355-491d-a42e-5c946d5a4382",
+              "parentUUID": "5f3059e0-42b0-4856-b53a-12ec3d5fce0d",
               "isHook": false,
               "skipped": false
             },
@@ -60,7 +60,7 @@
               "title": "T15 - Buscar um produto em específico",
               "fullTitle": "Casos de teste da rota /produtos da API Serverest T15 - Buscar um produto em específico",
               "timedOut": null,
-              "duration": 484,
+              "duration": 486,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -69,8 +69,8 @@
               "context": null,
               "code": "_serverest.default.buscarIdProdutoAleatorio();\ncy.get('@produtoId').then(produtoId => {\n  _serverest.default.localizarProdutoComId(produtoId._id).then(res => {\n    cy.contractValidation(res, 'get-produtos/id', 200);\n    _validaServerest.default.validaBuscaDeProdutosComId(res, 200);\n  });\n});",
               "err": {},
-              "uuid": "3290215e-70b2-419d-9758-b4caddf0399c",
-              "parentUUID": "af4de0d3-ea78-44e5-afef-7cb52e360f73",
+              "uuid": "f2612561-ea33-4c7c-a0c4-a7c5fe45485f",
+              "parentUUID": "5f3059e0-42b0-4856-b53a-12ec3d5fce0d",
               "isHook": false,
               "skipped": false
             },
@@ -78,7 +78,7 @@
               "title": "Postando usuário administrador para os testes que precisa de admin",
               "fullTitle": "Casos de teste da rota /produtos da API Serverest Postando usuário administrador para os testes que precisa de admin",
               "timedOut": null,
-              "duration": 253,
+              "duration": 252,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -87,15 +87,15 @@
               "context": null,
               "code": "let usuario = _factory.default.gerarNovoUsuario();\n_serverest.default.postarNovoUsuarioComParametro(usuario).then(res => {\n  cy.contractValidation(res, 'post-usuarios', 201);\n  _validaServerest.default.ValidarPostarNovoUsuario(res, 201);\n  Cypress.env('usuarioAdminLogin', {\n    \"email\": usuario.email,\n    \"password\": usuario.password\n  });\n});",
               "err": {},
-              "uuid": "a6488d29-b36c-4222-85bb-f06b36663378",
-              "parentUUID": "af4de0d3-ea78-44e5-afef-7cb52e360f73",
+              "uuid": "0a2b81b6-1cbd-43af-a361-26b1dc153052",
+              "parentUUID": "5f3059e0-42b0-4856-b53a-12ec3d5fce0d",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [
             {
-              "uuid": "0d456bc8-3e20-469f-974b-63be9896d490",
+              "uuid": "519601af-c263-42fb-a7c9-02eafcfbac3c",
               "title": "T12 - Realizar login com sucesso",
               "fullFile": "",
               "file": "",
@@ -106,7 +106,7 @@
                   "title": "T16 - Postar um novo produto",
                   "fullTitle": "Casos de teste da rota /produtos da API Serverest T12 - Realizar login com sucesso T16 - Postar um novo produto",
                   "timedOut": null,
-                  "duration": 474,
+                  "duration": 496,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -115,8 +115,8 @@
                   "context": null,
                   "code": "_serverest.default.cadastrarProduto().then(res => {\n  cy.contractValidation(res, 'post-produtos', 201);\n  _validaServerest.default.validaCadastroDeProduto(res, 201);\n  Cypress.env('produtoId', res.body._id);\n});",
                   "err": {},
-                  "uuid": "2a8dd3e9-8737-4a11-916a-00cce374e316",
-                  "parentUUID": "0d456bc8-3e20-469f-974b-63be9896d490",
+                  "uuid": "cbb0f7c6-74a3-4575-98a4-bc01d9d79fbf",
+                  "parentUUID": "519601af-c263-42fb-a7c9-02eafcfbac3c",
                   "isHook": false,
                   "skipped": false
                 },
@@ -124,7 +124,7 @@
                   "title": "T17 - Modificar as informações de um produto",
                   "fullTitle": "Casos de teste da rota /produtos da API Serverest T12 - Realizar login com sucesso T17 - Modificar as informações de um produto",
                   "timedOut": null,
-                  "duration": 650,
+                  "duration": 657,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -133,8 +133,8 @@
                   "context": null,
                   "code": "_serverest.default.buscarIdProdutoAleatorio();\ncy.get('@produtoId').then(produtoId => {\n  _serverest.default.modificarProduto(produtoId._id).then(res => {\n    cy.contractValidation(res, 'put-produtos/id', 200);\n    _validaServerest.default.validarModificarProduto(res, 200);\n  });\n});",
                   "err": {},
-                  "uuid": "c7a3c4a1-2e36-4e28-85f0-751a13648ead",
-                  "parentUUID": "0d456bc8-3e20-469f-974b-63be9896d490",
+                  "uuid": "4bc8302d-b56b-4787-8c5c-878ac954f115",
+                  "parentUUID": "519601af-c263-42fb-a7c9-02eafcfbac3c",
                   "isHook": false,
                   "skipped": false
                 },
@@ -142,7 +142,7 @@
                   "title": "T18 - Postar novo produto pelo método PUT",
                   "fullTitle": "Casos de teste da rota /produtos da API Serverest T12 - Realizar login com sucesso T18 - Postar novo produto pelo método PUT",
                   "timedOut": null,
-                  "duration": 228,
+                  "duration": 238,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -151,8 +151,8 @@
                   "context": null,
                   "code": "let id = _factory.default.gerarId();\n_serverest.default.criarProdutoComPut(id).then(res => {\n  cy.contractValidation(res, 'put-produtos/id', 201);\n  _validaServerest.default.validaCadastroDeProduto(res, 201);\n});",
                   "err": {},
-                  "uuid": "c95e3aa0-248c-4f54-9f08-b7db551f255a",
-                  "parentUUID": "0d456bc8-3e20-469f-974b-63be9896d490",
+                  "uuid": "e503fa5b-a64f-4c4b-a355-bd618753d7c6",
+                  "parentUUID": "519601af-c263-42fb-a7c9-02eafcfbac3c",
                   "isHook": false,
                   "skipped": false
                 },
@@ -160,7 +160,7 @@
                   "title": "T19 - Deletar um produto",
                   "fullTitle": "Casos de teste da rota /produtos da API Serverest T12 - Realizar login com sucesso T19 - Deletar um produto",
                   "timedOut": null,
-                  "duration": 433,
+                  "duration": 443,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -169,8 +169,8 @@
                   "context": null,
                   "code": "let produtoId = Cypress.env('produtoId');\n_serverest.default.deletarProduto(produtoId).then(res => {\n  cy.contractValidation(res, 'delete-produtos/id', 200);\n  _validaServerest.default.validarDeletarProduto(res, 200);\n});",
                   "err": {},
-                  "uuid": "58029544-2371-4f7b-a490-1aeba40391c1",
-                  "parentUUID": "0d456bc8-3e20-469f-974b-63be9896d490",
+                  "uuid": "d1b9337c-d361-4665-948d-54d39fee568f",
+                  "parentUUID": "519601af-c263-42fb-a7c9-02eafcfbac3c",
                   "isHook": false,
                   "skipped": false
                 },
@@ -178,7 +178,7 @@
                   "title": "T20 - Deletar um produto que não exista",
                   "fullTitle": "Casos de teste da rota /produtos da API Serverest T12 - Realizar login com sucesso T20 - Deletar um produto que não exista",
                   "timedOut": null,
-                  "duration": 252,
+                  "duration": 206,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -187,39 +187,39 @@
                   "context": null,
                   "code": "let id = _factory.default.gerarId();\n_serverest.default.deletarProdutoNaoExiste(id).then(res => {\n  cy.contractValidation(res, 'delete-produtos/id', 200);\n  _validaServerest.default.ValidarDeletarProdutoNaoExiste(res, 200);\n});",
                   "err": {},
-                  "uuid": "52e9947d-d2a3-4eb8-97b4-0ee5c2b7b32c",
-                  "parentUUID": "0d456bc8-3e20-469f-974b-63be9896d490",
+                  "uuid": "a187ffe6-92c0-4c4c-9d0f-1c6273ab6259",
+                  "parentUUID": "519601af-c263-42fb-a7c9-02eafcfbac3c",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "2a8dd3e9-8737-4a11-916a-00cce374e316",
-                "c7a3c4a1-2e36-4e28-85f0-751a13648ead",
-                "c95e3aa0-248c-4f54-9f08-b7db551f255a",
-                "58029544-2371-4f7b-a490-1aeba40391c1",
-                "52e9947d-d2a3-4eb8-97b4-0ee5c2b7b32c"
+                "cbb0f7c6-74a3-4575-98a4-bc01d9d79fbf",
+                "4bc8302d-b56b-4787-8c5c-878ac954f115",
+                "e503fa5b-a64f-4c4b-a355-bd618753d7c6",
+                "d1b9337c-d361-4665-948d-54d39fee568f",
+                "a187ffe6-92c0-4c4c-9d0f-1c6273ab6259"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 2037,
+              "duration": 2040,
               "root": false,
               "rootEmpty": false,
               "_timeout": 2000
             }
           ],
           "passes": [
-            "3290215e-70b2-419d-9758-b4caddf0399c",
-            "a6488d29-b36c-4222-85bb-f06b36663378"
+            "f2612561-ea33-4c7c-a0c4-a7c5fe45485f",
+            "0a2b81b6-1cbd-43af-a361-26b1dc153052"
           ],
           "failures": [
-            "8c7c180e-cc28-48bb-8fc8-209925b1708e"
+            "cac104d8-f355-491d-a42e-5c946d5a4382"
           ],
           "pending": [],
           "skipped": [],
-          "duration": 1256,
+          "duration": 1284,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
