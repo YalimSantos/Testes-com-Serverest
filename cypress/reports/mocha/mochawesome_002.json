@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 1,
-    "start": "2022-09-27T17:07:56.408Z",
-    "end": "2022-09-27T17:07:57.768Z",
-    "duration": 1360,
+    "start": "2022-09-27T17:29:53.949Z",
+    "end": "2022-09-27T17:29:55.360Z",
+    "duration": 1411,
     "testsRegistered": 2,
     "passPercent": 50,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "2939480e-d1ee-4610-bf28-a1226f041563",
+      "uuid": "2fd5f96a-9d4d-4125-96c6-ef3facb94f84",
       "title": "",
       "fullFile": "cypress/integration/3_login.spec.js",
       "file": "cypress/integration/3_login.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "73a2d995-838f-4652-8c66-f337a83a8dfe",
+          "uuid": "288a1a68-3e9a-4734-99e1-2141f676ed4a",
           "title": "Casos de teste da rota /login",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "T12 - Realizar login com sucesso",
               "fullTitle": "Casos de teste da rota /login T12 - Realizar login com sucesso",
               "timedOut": null,
-              "duration": 565,
+              "duration": 575,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "_serverest.default.buscarUsuarioAleatorio();\ncy.get('@usuarioLogin').then(usuario => {\n  _serverest.default.login(usuario).then(res => {\n    cy.contractValidation(res, 'post-login', 200);\n    _validaServerest.default.ValidaLogin(res, 200);\n    _serverest.default.salvarBearer(res);\n  });\n});",
               "err": {},
-              "uuid": "858b464f-0f45-4ad3-9a5c-01340cc49f79",
-              "parentUUID": "73a2d995-838f-4652-8c66-f337a83a8dfe",
+              "uuid": "12c7748a-d8e7-4b26-8b4b-12fb21db6b88",
+              "parentUUID": "288a1a68-3e9a-4734-99e1-2141f676ed4a",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "T13 - Falhar ao tentar realizar um login",
               "fullTitle": "Casos de teste da rota /login T13 - Falhar ao tentar realizar um login",
               "timedOut": null,
-              "duration": 729,
+              "duration": 773,
               "state": "failed",
               "speed": null,
               "pass": false,
@@ -69,22 +69,22 @@
                 "estack": "AssertionError: expected 401 to equal 400\n    at Function.ValidaLoginSemSucesso (https://serverest.dev/__cypress/tests?p=cypress\\integration\\3_login.spec.js:691:30)\n    at Context.eval (https://serverest.dev/__cypress/tests?p=cypress\\integration\\3_login.spec.js:202:34)",
                 "diff": "- 401\n+ 400\n"
               },
-              "uuid": "8efa4f7f-73a5-492e-884e-c168b687ce3c",
-              "parentUUID": "73a2d995-838f-4652-8c66-f337a83a8dfe",
+              "uuid": "3bc87240-27d5-4d4c-a7dc-bb0283e8e811",
+              "parentUUID": "288a1a68-3e9a-4734-99e1-2141f676ed4a",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "858b464f-0f45-4ad3-9a5c-01340cc49f79"
+            "12c7748a-d8e7-4b26-8b4b-12fb21db6b88"
           ],
           "failures": [
-            "8efa4f7f-73a5-492e-884e-c168b687ce3c"
+            "3bc87240-27d5-4d4c-a7dc-bb0283e8e811"
           ],
           "pending": [],
           "skipped": [],
-          "duration": 1294,
+          "duration": 1348,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
